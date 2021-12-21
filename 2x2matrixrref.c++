@@ -19,7 +19,7 @@ int main(){
         }
 
     }
-
+    
     //multRow(matrix[0], 2);
 
     // determine matrix
