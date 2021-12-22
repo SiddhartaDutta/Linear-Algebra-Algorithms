@@ -43,8 +43,10 @@ int main(){
         float tempPivotVal = matrix[pos][pos];
 
         // Iterate thru row to divide row entries by pivot - sets row in terms of pivot = 1
-        for(int x = 0; x < m; x++){
-            matrix[pos][x] /= tempPivotVal; // divide entry by pivot
+        if(tempPivotVal){                       // prevent division by 0
+            for(int x = 0; x < m; x++){
+                matrix[pos][x] /= tempPivotVal; // divide entry by pivot
+            }
         }
 
 
@@ -56,13 +58,13 @@ int main(){
             for(int x = pos; x < (n - 1); x++){
 
                 // following row's negative "pivot to be removed" value
-                float tempFactor = -matrix[pos + 1][pos];
+                float tempFactor = -matrix[x + 1][pos];
 
                 // Increment across row (over columns of row)
                 for(int y = 0; y < m; y++){
 
                     // take following row, multiply pivot row columns with pivot to be removed and add to following row
-                    matrix[pos + 1][y] += matrix[pos][y] * tempFactor;
+                    matrix[x + 1][y] += matrix[pos][y] * tempFactor;
 
                 }
 
