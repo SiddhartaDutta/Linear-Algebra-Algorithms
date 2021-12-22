@@ -9,7 +9,7 @@ int main(){
 
     cout << "Rows: ";
     cin >> n;
-    cout << endl << "Colms: ";
+    cout << "Colms: ";
     cin >> m;
 
     // init matrix
@@ -21,9 +21,9 @@ int main(){
     }
 
     // request and store entries
-    for(int x = 0; x < 2; x++){
+    for(int x = 0; x < n; x++){
 
-        for(int y = 0; y < 2; y++){
+        for(int y = 0; y < m; y++){
             cout << "IN " << x << "," << y << " : ";
             cin >> matrix[x][y];
         }
@@ -47,22 +47,27 @@ int main(){
             matrix[pos][x] /= tempPivotVal; // divide entry by pivot
         }
 
+
+        /* Tests going down */
         // Adjust all other rows to isolate pivot
         if((pos + 1) < n){
 
             // Increment over each following row
             for(int x = pos; x < (n - 1); x++){
 
-                float tempAddend = -();
+                // following row's negative "pivot to be removed" value
+                float tempFactor = -matrix[pos + 1][pos];
 
                 // Increment across row (over columns of row)
                 for(int y = 0; y < m; y++){
 
-                    
+                    // take following row, multiply pivot row columns with pivot to be removed and add to following row
+                    matrix[pos + 1][y] += matrix[pos][y] * tempFactor;
 
                 }
 
             }
+
         }
 
     }
@@ -70,21 +75,25 @@ int main(){
     // determine matrix
         // [0][0] & [1][0]
             // make [0][0] = 1
-    matrix[0][0] /= matrix[0][0];
-    matrix[0][1] /= matrix[0][0];
-            // [1][0] = 0
-    float temp = -(matrix[0][1] * matrix[1][0]);
-    matrix[1][0] = 0;
-    matrix[1][1] += temp;
+    // matrix[0][0] /= matrix[0][0];
+    // matrix[0][1] /= matrix[0][0];
+    //         // [1][0] = 0
+    // float temp = -(matrix[0][1] * matrix[1][0]);
+    // matrix[1][0] = 0;
+    // matrix[1][1] += temp;
 
-    if(matrix[1][1]){
-        matrix[1][1] = 1;
-        float temp = -(matrix[1][1] * matrix[0][1]);
-        matrix[0][1] += temp;
+    // if(matrix[1][1]){
+    //     matrix[1][1] = 1;
+    //     float temp = -(matrix[1][1] * matrix[0][1]);
+    //     matrix[0][1] += temp;
+    // }
+
+    for(int x = 0; x < n; x++){
+        for(int y = 0; y < m; y++){
+            cout << matrix[x][y] << "\t";
+        }
+        cout << endl;
     }
-
-
-    cout << matrix[0][0] << "\t" << matrix [0][1] << endl << matrix[1][0] << "\t" << matrix [1][1] << endl;
 
 
 
