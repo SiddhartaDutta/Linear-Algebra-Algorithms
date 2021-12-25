@@ -30,42 +30,32 @@ int main(){
 
     }
 
-    //multRow(matrix[0], 2);
+    // Determine pivot location
+    for(int leadVal = 0; leadVal < n && leadVal < m; leadVal++){
 
-    for(int pos = 0; pos < n && pos < m; pos++){
-
-        // check if val in pos = 0
-        if(!matrix[pos][pos]){
+        // Ensure leadVal is not 0 - swap rows if needed
+        if(!matrix[leadVal][leadVal]){
             // find val to swap rows (if exists)
         }
 
-        // if not, conv to 1, adjust row and add to others
-        float tempPivotVal = matrix[pos][pos];
+        // Divisor for pivot - outside to prevent constant calculation
+        float divisor = matrix[leadVal][leadVal];
 
-        // Iterate thru row to divide row entries by pivot - sets row in terms of pivot = 1
-        if(tempPivotVal){                       // prevent division by 0
-            for(int x = 0; x < m; x++){
-                matrix[pos][x] /= tempPivotVal; // divide entry by pivot
-            }
-        }
+        // Increment over each row
+        for(int row = 0; row < n; row++){
 
+            // Constant of row who's being amended (if pivot [0][0], value of [1][0])
+            float multiplier = -matrix[row][leadVal];
 
-        /* Tests going down */
-        // Adjust all other rows to isolate pivot
-        if((pos + 1) < n){
+            // Increment across row (over columns of row)
+            for(int column = 0; column < m; column++){
 
-            // Increment over each following row
-            for(int x = pos; x < (n - 1); x++){
-
-                // following row's negative "pivot to be removed" value
-                float tempFactor = -matrix[x + 1][pos];
-
-                // Increment across row (over columns of row)
-                for(int y = 0; y < m; y++){
-
-                    // take following row, multiply pivot row columns with pivot to be removed and add to following row
-                    matrix[x + 1][y] += matrix[pos][y] * tempFactor;
-
+                if(row == leadVal){     // if row of current pivot, divide to reduce pivot to 1
+                    if(divisor != 0){            // prevents division by 0
+                        matrix[row][column] /= divisor;
+                    }
+                } else {                // else, multiply by row factor and add to reduce (makes pivot column 0)
+                    matrix[row][column] += matrix[leadVal][column] * multiplier;
                 }
 
             }
@@ -74,30 +64,12 @@ int main(){
 
     }
 
-    // determine matrix
-        // [0][0] & [1][0]
-            // make [0][0] = 1
-    // matrix[0][0] /= matrix[0][0];
-    // matrix[0][1] /= matrix[0][0];
-    //         // [1][0] = 0
-    // float temp = -(matrix[0][1] * matrix[1][0]);
-    // matrix[1][0] = 0;
-    // matrix[1][1] += temp;
-
-    // if(matrix[1][1]){
-    //     matrix[1][1] = 1;
-    //     float temp = -(matrix[1][1] * matrix[0][1]);
-    //     matrix[0][1] += temp;
-    // }
-
+    // print matrix
     for(int x = 0; x < n; x++){
         for(int y = 0; y < m; y++){
             cout << matrix[x][y] << "\t";
         }
         cout << endl;
     }
-
-
-
 
 }
