@@ -12,3 +12,4 @@ A collection of C++ algorithms designed to solve most linear algebra problems. T
 >>> Solutions to an NxM Matrix
 >>>
 >>> 
+>>>
