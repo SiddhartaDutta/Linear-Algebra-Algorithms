@@ -30,16 +30,60 @@ int main(){
 
     }
 
+    // print matrix
+    for(int x = 0; x < n; x++){
+        for(int y = 0; y < m; y++){
+            cout << matrix[x][y] << "\t";
+        }
+        cout << endl;
+    }
+
+    //test swap
+    // if(!matrix[0][0]){
+        
+    //     float m1[m];
+
+    //     for(int col = 0; col < m; col++){
+
+    //         m1[col] = matrix[0][col];
+    //         matrix[0][col] = matrix[1][col];
+    //         matrix[1][col] = m1[col];
+
+    //     }
+
+    // }
+
+    //return 1;
+
     // Determine pivot location
     for(int leadVal = 0; leadVal < n && leadVal < m; leadVal++){
 
         // Ensure leadVal is not 0 - swap rows if needed
         if(!matrix[leadVal][leadVal]){
-            // find val to swap rows (if exists)
+            
+            float *m1 = new float[m];
+
+            for(int col = 0; col < m-1; col++){
+
+                m1[col] = matrix[leadVal][col];
+                matrix[leadVal][col] = matrix[leadVal + 1][col];
+                matrix[leadVal + 1][col] = m1[col];
+
+            }
+
         }
 
         // Divisor for pivot - outside to prevent constant calculation
         float divisor = matrix[leadVal][leadVal];
+
+        for(int col = 0; col < m; col++){
+            if(divisor != 0){
+                matrix[leadVal][col] /= divisor;
+            }
+            //cout << matrix[leadVal][col] << endl;
+        }
+
+        divisor = matrix[leadVal][leadVal];
 
         // Increment over each row
         for(int row = 0; row < n; row++){
@@ -57,6 +101,8 @@ int main(){
                 } else {                // else, multiply by row factor and add to reduce (makes pivot column 0)
                     matrix[row][column] += matrix[leadVal][column] * multiplier;
                 }
+
+                //cout << row << ", " << column << ", " << matrix[row][column] << endl;
 
             }
 
