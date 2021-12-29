@@ -7,6 +7,8 @@ int main(){
 
     int n, m;
 
+    int leadValCol = 0;
+
     cout << "Rows: ";
     cin >> n;
     cout << "Colms: ";
@@ -35,8 +37,9 @@ int main(){
         for(int y = 0; y < m; y++){
             cout << matrix[x][y] << "\t";
         }
-        cout << endl;
+        cout << '\n';
     }
+    cout << "\n\n";
 
     //test swap
     // if(!matrix[0][0]){
@@ -58,13 +61,49 @@ int main(){
     // Determine pivot location
     for(int leadVal = 0; leadVal < n && leadVal < m; leadVal++){
 
-        int leadValCol = 0;
-        if(leadVal){
+        if(leadVal != 0){
             leadValCol += 1;
         }
 
         bool isZeroCol = true;
         int nonZeroRow;
+
+        // print matrix
+        for(int x = 0; x < n; x++){
+            for(int y = 0; y < m; y++){
+                cout << matrix[x][y] << "\t";
+            }
+            cout << '\n';
+        }
+        cout << "\n\n";
+
+        // remove extremely low values
+        for(int x = 0; x < n; x++){
+            for(int y = 0; y < m; y++){
+                if(matrix[x][y] < 0.0001)   matrix[x][y] = 0;
+            }
+        }
+
+        // move 0-rows
+        /*for(int x = 0; x < n; x++){
+
+            bool isZero = true;
+
+            for(int y = 0; y < m; y++){
+                if(matrix[x][y] != 0)   isZero = false;
+            }
+
+            if(isZero){
+                n--;
+
+                // swap 0 row with last row
+                for(int c = 0; c < m; c++){
+                    float temp = matrix[x][c];
+                    matrix[x][c] = matrix[n - 1][c];
+                    matrix[n - 1][c] = temp;
+                }
+            }
+        }*/
 
         // Ensure leadVal is not 0 - swap rows if needed
         if(!matrix[leadVal][leadValCol]){
@@ -101,17 +140,7 @@ int main(){
 
                 }
 
-            }
-
-            
-
-            // for(int col = 0; col < m-1; col++){
-
-            //     m1[col] = matrix[leadVal][col];
-            //     matrix[leadVal][col] = matrix[leadVal + 1][col];
-            //     matrix[leadVal + 1][col] = m1[col];
-
-            // }
+            } 
 
         }
 
