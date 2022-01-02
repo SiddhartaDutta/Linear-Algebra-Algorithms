@@ -5,44 +5,6 @@ using namespace std;
 
 void rowReduceMatrix(float **matrixInput, int n, int m);
 
-int main(){
-
-    int n, m;
-
-    cout << "Rows: ";
-    cin >> n;
-    cout << "Colms: ";
-    cin >> m;
-
-    // init matrix
-    float **matrix = new float *[n];
-
-    // create 2nd dim
-    for(int i = 0; i < n; i++){
-        matrix[i] = new float[m];
-    }
-
-    // request and store entries
-    for(int x = 0; x < n; x++){
-
-        for(int y = 0; y < m; y++){
-            cout << "IN " << x << "," << y << " : ";
-            cin >> matrix[x][y];
-        }
-
-    }
-
-    rowReduceMatrix(matrix, n, m);
-
-    // print matrix
-    for(int x = 0; x < n; x++){
-        for(int y = 0; y < m; y++){
-            cout << matrix[x][y] << "\t";
-        }
-        cout << endl;
-    }
-
-}
 
 void rowReduceMatrix(float **matrixInput, int n, int m){
 
