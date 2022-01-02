@@ -5,9 +5,7 @@ A collection of C++ algorithms designed to solve most linear algebra problems. T
 > ## Chapter 1
 >
 >> ### Section 1.2
->>> Pivot Positions of an NxM Matrix
->>>
->>> Row Reduction of an NxM Matrix
+>>> Row Reduction & Pivots of an NxM Matrix
 >>>
 >>> Solutions to an NxM Matrix
 >>>
