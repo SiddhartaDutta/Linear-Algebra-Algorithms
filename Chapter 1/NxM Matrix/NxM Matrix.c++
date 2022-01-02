@@ -32,15 +32,6 @@ int main(){
 
     }
 
-    // print matrix
-    for(int x = 0; x < n; x++){
-        for(int y = 0; y < m; y++){
-            cout << matrix[x][y] << "\t";
-        }
-        cout << '\n';
-    }
-    cout << "\n\n";
-
     // Determine pivot location
     for(int leadVal = 0; leadVal < n && leadVal < m; leadVal++){
 
@@ -51,19 +42,10 @@ int main(){
         bool isZeroCol = true;
         int nonZeroRow;
 
-        // print matrix
-        for(int x = 0; x < n; x++){
-            for(int y = 0; y < m; y++){
-                cout << matrix[x][y] << "\t";
-            }
-            cout << '\n';
-        }
-        cout << "\n\n";
-
         // remove extremely low values
         for(int x = 0; x < n; x++){
             for(int y = 0; y < m; y++){
-                if(    (abs(fmod(matrix[x][y], 1)) < 0.0001) && (fmod(matrix[x][y], 1) != 0)    )   matrix[x][y] = 0;
+                if(    (abs(fmod(matrix[x][y], 1)) < 0.0001) && (fmod(matrix[x][y], 1) != 0)    )   fmod(matrix[x][y], 1);
             }
         }
 
