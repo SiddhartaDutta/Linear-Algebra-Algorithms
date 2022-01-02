@@ -45,7 +45,11 @@ int main(){
         // remove extremely low values
         for(int x = 0; x < n; x++){
             for(int y = 0; y < m; y++){
-                if(    (abs(fmod(matrix[x][y], 1)) < 0.0001) && (fmod(matrix[x][y], 1) != 0)    )   fmod(matrix[x][y], 1);
+                if(    (abs(fmod(matrix[x][y], 1)) < 0.0001) && (fmod(matrix[x][y], 1) != 0)    ){
+
+                    matrix[x][y] -= fmod(matrix[x][y], 1);
+
+                }
             }
         }
 
