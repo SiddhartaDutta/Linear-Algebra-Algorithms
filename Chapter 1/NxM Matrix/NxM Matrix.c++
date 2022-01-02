@@ -41,23 +41,6 @@ int main(){
     }
     cout << "\n\n";
 
-    //test swap
-    // if(!matrix[0][0]){
-        
-    //     float m1[m];
-
-    //     for(int col = 0; col < m; col++){
-
-    //         m1[col] = matrix[0][col];
-    //         matrix[0][col] = matrix[1][col];
-    //         matrix[1][col] = m1[col];
-
-    //     }
-
-    // }
-
-    //return 1;
-
     // Determine pivot location
     for(int leadVal = 0; leadVal < n && leadVal < m; leadVal++){
 
@@ -80,7 +63,7 @@ int main(){
         // remove extremely low values
         for(int x = 0; x < n; x++){
             for(int y = 0; y < m; y++){
-                if(matrix[x][y] < 0.0001)   matrix[x][y] = 0;
+                if(    (abs(fmod(matrix[x][y], 1)) < 0.0001) && (fmod(matrix[x][y], 1) != 0)    )   matrix[x][y] = 0;
             }
         }
 
@@ -124,13 +107,19 @@ int main(){
 
                 }
 
+                // if non-zero pos found, save col position, save finding, and force-end for loop
+                 if(matrix[leadVal][col]){
+                     isZeroCol = false;
+                     col = m;
+                 }
+
                 // if column is zero, add 1 to pivot column
-                if(isZeroCol)   leadValCol++;
+                if(isZeroCol && col < m - 1)   leadValCol++;
 
             }
 
             // non-zero row found, swap rows
-            if(!isZeroCol){
+            if(!isZeroCol && !(leadVal == n - 1)){
 
                 for(int col = 0; col < m; col++){
 
