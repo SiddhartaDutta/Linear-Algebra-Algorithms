@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+#ifndef MATRIX_H
+#define MATRIX_H
+
 class Matrix {
 
     private:
@@ -39,7 +42,10 @@ class Matrix {
 
 
     /* ACCESSORS */
+    
 
     /* MUTATORS */
-
+    void rowReduceMatrix(int n, int m);
 };
+
+#endif

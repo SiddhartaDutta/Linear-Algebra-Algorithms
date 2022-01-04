@@ -1,7 +1,8 @@
 #include <iostream>
-using namespace std;
 
-#include <matrix.h>
+#include "../Math-Projs/include/matrix.h"
+//#include "matrix.h"
+using namespace std;
 
 int main(){
 
@@ -14,14 +15,14 @@ int main(){
 
     Matrix test = Matrix(n, m);
     
-    test.rowReduceMatrix(test, n, m);
+    test.rowReduceMatrix(n, m);
 
     // print matrix
-    for(int x = 0; x < n; x++){
-        for(int y = 0; y < m; y++){
-            cout << matrix[x][y] << "\t";
-        }
-        cout << endl;
-    }
+    // for(int x = 0; x < n; x++){
+    //     for(int y = 0; y < m; y++){
+    //         cout << test[x][y] << "\t";
+    //     }
+    //     cout << endl;
+    // }
 
 }
