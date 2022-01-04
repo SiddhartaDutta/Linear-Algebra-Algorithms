@@ -14,8 +14,8 @@ int main(){
     cin >> m;
 
     Matrix test = Matrix(n, m);
-    
-    test.rowReduceMatrix(n, m);
+    test.printCLI();
+    //test.rowReduceMatrix();
 
     // print matrix
     // for(int x = 0; x < n; x++){

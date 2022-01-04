@@ -1,8 +1,8 @@
-#include <iostream>
-using namespace std;
-
 #ifndef MATRIX_H
 #define MATRIX_H
+
+#include <iostream>
+using namespace std;
 
 class Matrix {
 
@@ -42,10 +42,22 @@ class Matrix {
 
 
     /* ACCESSORS */
+    void printCLI();
     
 
     /* MUTATORS */
-    void rowReduceMatrix(int n, int m);
+    void rowReduceMatrix();
 };
+
+// void Matrix::printCLI(){
+
+//     for(int x = 0; x < n; x++){
+//         for(int y = 0; y < m; y++){
+//             cout << matrix[x][y] << "\t";
+//         }
+//         cout << endl;
+//     }
+
+// }
 
 #endif

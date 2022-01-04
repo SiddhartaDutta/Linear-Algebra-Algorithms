@@ -1,10 +1,9 @@
+#include "../Math-Projs/include/matrix.h"
 #include <iostream>
 #include <cmath>
-
-#include "../Math-Projs/include/matrix.h"
 using namespace std;
 
-void Matrix::rowReduceMatrix(int n, int m){
+void Matrix::rowReduceMatrix(){
 
     int leadValCol = 0;
 
