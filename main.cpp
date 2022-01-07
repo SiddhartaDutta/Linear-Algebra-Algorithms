@@ -15,7 +15,8 @@ int main(){
 
     Matrix test = Matrix(n, m);
     test.printCLI();
-    //test.rowReduceMatrix();
+    test.rowReduceMatrix();
+    test.printCLI();
 
     // print matrix
     // for(int x = 0; x < n; x++){
