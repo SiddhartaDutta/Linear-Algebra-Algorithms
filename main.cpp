@@ -1,7 +1,6 @@
 #include <iostream>
 
-#include "../Math-Projs/include/matrix.h"
-//#include "matrix.h"
+#include "matrix.h"
 using namespace std;
 
 int main(){

@@ -8,7 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 //"${workspaceFolder}\\*.cpp",
-                "main.cpp", "src/Accessors/printCLI.cpp", "src/Chapter 1/NxM Matrix/NxM Matrix.cpp",
+                "main.cpp", "src/Accessors/printCLI.cpp", "src/Chapter 1/NxM Matrix/RowReduceMatrix.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I", 
