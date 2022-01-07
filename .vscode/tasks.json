@@ -7,9 +7,12 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                //"${workspaceFolder}\\*.cpp",
+                "main.cpp", "src/Accessors/printCLI.cpp", "src/Chapter 1/NxM Matrix/NxM Matrix.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-I", 
+                "include"
             ],
             "options": {
                 "cwd": "${fileDirname}"

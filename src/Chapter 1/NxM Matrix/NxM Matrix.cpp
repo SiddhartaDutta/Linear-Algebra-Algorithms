@@ -1,50 +1,10 @@
+//#include "../Math-Projs/include/matrix.h"
+#include "C:/Users/siddh/OneDrive/Documents/Visual Studio Code/C++ Projects/Math-Projs/include/matrix.h"
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
-void rowReduceMatrix(float **matrixInput, int n, int m);
-
-int main(){
-
-    int n, m;
-
-    cout << "Rows: ";
-    cin >> n;
-    cout << "Colms: ";
-    cin >> m;
-
-    // init matrix
-    float **matrix = new float *[n];
-
-    // create 2nd dim
-    for(int i = 0; i < n; i++){
-        matrix[i] = new float[m];
-    }
-
-    // request and store entries
-    for(int x = 0; x < n; x++){
-
-        for(int y = 0; y < m; y++){
-            cout << "IN " << x << "," << y << " : ";
-            cin >> matrix[x][y];
-        }
-
-    }
-
-    rowReduceMatrix(matrix, n, m);
-
-    // print matrix
-    for(int x = 0; x < n; x++){
-        for(int y = 0; y < m; y++){
-            cout << matrix[x][y] << "\t";
-        }
-        cout << endl;
-    }
-
-}
-
-void rowReduceMatrix(float **matrixInput, int n, int m){
+void Matrix::rowReduceMatrix(){
 
     int leadValCol = 0;
 
@@ -61,9 +21,9 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
         // remove extremely low values
         for(int x = 0; x < n; x++){
             for(int y = 0; y < m; y++){
-                if(    (abs(fmod(matrixInput[x][y], 1)) < 0.0001) && (fmod(matrixInput[x][y], 1) != 0)    ){
+                if(    (abs(fmod(matrix[x][y], 1)) < 0.0001) && (fmod(matrix[x][y], 1) != 0)    ){
 
-                    matrixInput[x][y] -= fmod(matrixInput[x][y], 1);
+                    matrix[x][y] -= fmod(matrix[x][y], 1);
 
                 }
             }
@@ -91,7 +51,7 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
         }*/
 
         // Ensure leadVal is not 0 - swap rows if needed
-        if(!matrixInput[leadVal][leadValCol]){
+        if(!matrix[leadVal][leadValCol]){
 
             // find next non-zero
                 // go down column looking for non-zero
@@ -100,7 +60,7 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
                 for(int row = leadVal + 1; row < n; row++){
 
                     // if non-zero row found, save row position, save finding, and force-end for loop
-                    if(matrixInput[row][col]){
+                    if(matrix[row][col]){
                         nonZeroRow = row;
                         isZeroCol = false;
                         row = n;
@@ -110,7 +70,7 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
                 }
 
                 // if non-zero pos found, save col position, save finding, and force-end for loop
-                 if(matrixInput[leadVal][col]){
+                 if(matrix[leadVal][col]){
                      isZeroCol = false;
                      col = m;
                  }
@@ -125,9 +85,9 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
 
                 for(int col = 0; col < m; col++){
 
-                    float temp = matrixInput[leadVal][col];
-                    matrixInput[leadVal][col] = matrixInput[nonZeroRow][col];
-                    matrixInput[nonZeroRow][col] = temp;
+                    float temp = matrix[leadVal][col];
+                    matrix[leadVal][col] = matrix[nonZeroRow][col];
+                    matrix[nonZeroRow][col] = temp;
 
                 }
 
@@ -136,32 +96,32 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
         }
 
         // Divisor for pivot - outside to prevent constant calculation
-        float divisor = matrixInput[leadVal][leadValCol];
+        float divisor = matrix[leadVal][leadValCol];
 
         // Set pivot to = 1
         for(int col = 0; col < m; col++){
             if(divisor != 0){
-                matrixInput[leadVal][col] /= divisor;
+                matrix[leadVal][col] /= divisor;
             }
         }
 
-        divisor = matrixInput[leadVal][leadValCol];
+        divisor = matrix[leadVal][leadValCol];
 
         // Increment over each row
         for(int row = 0; row < n; row++){
 
             // Constant of row who's being amended (if pivot [0][0], value of [1][0])
-            float multiplier = -matrixInput[row][leadValCol];
+            float multiplier = -matrix[row][leadValCol];
 
             // Increment across row (over columns of row)
             for(int column = 0; column < m; column++){
 
                 if(row == leadVal){     // if row of current pivot, divide to reduce pivot to 1
                     if(divisor != 0){            // prevents division by 0
-                        matrixInput[row][column] /= divisor;
+                        matrix[row][column] /= divisor;
                     }
                 } else {                // else, multiply by row factor and add to reduce (makes pivot column 0)
-                    matrixInput[row][column] += matrixInput[leadVal][column] * multiplier;
+                    matrix[row][column] += matrix[leadVal][column] * multiplier;
                 }
 
                 //cout << row << ", " << column << ", " << matrix[row][column] << endl;
@@ -175,7 +135,7 @@ void rowReduceMatrix(float **matrixInput, int n, int m){
     // print matrix
     for(int x = 0; x < n; x++){
         for(int y = 0; y < m; y++){
-            cout << matrixInput[x][y] << "\t";
+            cout << matrix[x][y] << "\t";
         }
         cout << endl;
     }
