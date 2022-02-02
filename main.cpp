@@ -12,7 +12,7 @@ int main(){
     cout << "Colms: ";
     cin >> m;
 
-    Matrix test = Matrix(n, m);
+    Matrix test = Matrix(n, m, true);
     test.printCLI();
     test.solutionsOfLinearSystems();
     //test.printCLI();
