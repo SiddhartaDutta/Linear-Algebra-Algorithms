@@ -1,6 +1,7 @@
-#include "matrix.h"
-#include <iostream>
 #include <cmath>
+
+#include "matrix.h"
+
 using namespace std;
 
 void Matrix::rowReduceMatrix(){
@@ -131,12 +132,12 @@ void Matrix::rowReduceMatrix(){
 
     }
 
-    // print matrix
-    for(int x = 0; x < n; x++){
-        for(int y = 0; y < m; y++){
-            cout << matrix[x][y] << "\t";
-        }
-        cout << endl;
-    }
+    // // print matrix
+    // for(int x = 0; x < n; x++){
+    //     for(int y = 0; y < m; y++){
+    //         cout << matrix[x][y] << "\t";
+    //     }
+    //     cout << endl;
+    // }
 
 }

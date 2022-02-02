@@ -14,7 +14,7 @@ class Matrix {
     public:
 
     /* CONSTRUCTORS */
-    Matrix(int rows, int cols){
+    Matrix(int rows, int cols, bool fill){
 
         n = rows;
 
@@ -28,16 +28,24 @@ class Matrix {
             matrix[i] = new float[cols];
         }
 
-        // request and store entries
-        for(int x = 0; x < n; x++){
+        // Fill matrix if requested
+        if(fill){
+            // request and store entries
+            for(int x = 0; x < n; x++){
 
-            for(int y = 0; y < m; y++){
-                cout << "IN " << x << "," << y << " : ";
-                cin >> matrix[x][y];
+                for(int y = 0; y < m; y++){
+                    cout << "IN " << x << "," << y << " : ";
+                    cin >> matrix[x][y];
+                }
+
             }
-
         }
 
+    }
+
+    // Without filler constructor
+    Matrix(int rows, int cols){
+        Matrix(rows, cols, false);
     }
 
 
@@ -46,18 +54,13 @@ class Matrix {
     
 
     /* MUTATORS */
+
+    // General Purpose Mutators
+    void modifyMatrix(int row, int cols, float value);
+
+    // "New" Mutators
     void rowReduceMatrix();
+    void solutionsOfLinearSystems();
 };
-
-// void Matrix::printCLI(){
-
-//     for(int x = 0; x < n; x++){
-//         for(int y = 0; y < m; y++){
-//             cout << matrix[x][y] << "\t";
-//         }
-//         cout << endl;
-//     }
-
-// }
 
 #endif

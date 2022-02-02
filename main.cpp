@@ -12,10 +12,11 @@ int main(){
     cout << "Colms: ";
     cin >> m;
 
-    Matrix test = Matrix(n, m);
-    test.printCLI();
-    test.rowReduceMatrix();
-    test.printCLI();
+    Matrix test = Matrix(n, m, true);
+    //test.printCLI();
+    test.solutionsOfLinearSystems();
+    //test.printCLI();
+    //cout << !0;
 
     // print matrix
     // for(int x = 0; x < n; x++){
