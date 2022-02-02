@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void Matrix::solutionsOfLinearSystems(){
+void Matrix::locateMatrixPivots(){
 
     // Row-reduce matrix to ensure pivots are accurately found - IRREVERSIBLE PROCESS!
     rowReduceMatrix();

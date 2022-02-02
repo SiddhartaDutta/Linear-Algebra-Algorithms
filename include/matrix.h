@@ -59,6 +59,7 @@ class Matrix {
 
     // "New" Mutators
     void rowReduceMatrix();
+    void locateMatrixPivots();
     void solutionsOfLinearSystems();
 };
 

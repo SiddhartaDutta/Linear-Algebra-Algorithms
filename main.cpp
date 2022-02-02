@@ -14,7 +14,7 @@ int main(){
 
     Matrix test = Matrix(n, m, true);
     test.printCLI();
-    test.solutionsOfLinearSystems();
+    test.locateMatrixPivots();
     //test.printCLI();
     //cout << !0;
 
