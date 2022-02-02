@@ -43,20 +43,8 @@ class Matrix {
 
     }
 
-    // Without filler constructor
-    Matrix(int rows, int cols){
-        n = rows;
-
-        m = cols;
-
-        // Create 1st dimension of matrix
-        matrix = new float *[rows];
-
-        // Create 2nd dimension of matrix
-        for(int i = 0; i < n; i++){
-            matrix[i] = new float[cols];
-        }
-    }
+    // Empty matrix constructor
+    Matrix(int rows, int cols) : Matrix(rows, cols, false){}
 
 
     /* ACCESSORS */
