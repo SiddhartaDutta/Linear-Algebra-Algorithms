@@ -16,7 +16,7 @@ void Matrix::solutionsOfLinearSystems(){
     // Visit each row
     for(int r = 0; r < n; r++){
 
-        // Go thru each row looking for non-zero values
+        // Go thru each row looking for non-zero values (by checking each column)
         for(int c = 0; c < m; c++){
 
             // Fill return matrix with symbols
@@ -28,7 +28,7 @@ void Matrix::solutionsOfLinearSystems(){
                 bool isPivot = true;
 
                 // Research all rows (column to be checked already given from prev for loop)
-                for(int r2 = 0; r < n; r++){
+                for(int r2 = 0; r2 < n; r2++){
 
                     // Ensure currRow != row potential pivot found in
                     // Given case 1, then determine if not 0
@@ -54,7 +54,7 @@ void Matrix::solutionsOfLinearSystems(){
     printCLI();
 
     // Print temporary symbolic matrix
-    retSymbolizedMatrix->printCLI();
+    retSymbolizedMatrix->printSymbolizedMatrixCLI();
 
     // Free memory - delete temporary symbolic matrix
     delete retSymbolizedMatrix;

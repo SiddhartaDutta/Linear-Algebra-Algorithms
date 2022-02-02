@@ -12,8 +12,8 @@ int main(){
     cout << "Colms: ";
     cin >> m;
 
-    Matrix test = Matrix(n, m, true);
-    //test.printCLI();
+    Matrix test = Matrix(n, m);
+    test.printCLI();
     test.solutionsOfLinearSystems();
     //test.printCLI();
     //cout << !0;

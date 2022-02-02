@@ -14,7 +14,7 @@ class Matrix {
     public:
 
     /* CONSTRUCTORS */
-    Matrix(int rows, int cols, bool fill){
+    Matrix(int rows, int cols){//}, bool fill){
 
         n = rows;
 
@@ -29,7 +29,7 @@ class Matrix {
         }
 
         // Fill matrix if requested
-        if(fill){
+        //if(fill){
             // request and store entries
             for(int x = 0; x < n; x++){
 
@@ -39,18 +39,19 @@ class Matrix {
                 }
 
             }
-        }
+        //}
 
     }
 
     // Without filler constructor
-    Matrix(int rows, int cols){
-        Matrix(rows, cols, false);
-    }
+    // Matrix(int rows, int cols){
+    //     Matrix(rows, cols, false);
+    // }
 
 
     /* ACCESSORS */
     void printCLI();
+    void printSymbolizedMatrixCLI();
     
 
     /* MUTATORS */

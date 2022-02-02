@@ -8,7 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 //"${workspaceFolder}\\*.cpp",
-                "main.cpp", "src/Accessors/printCLI.cpp", "src/Chapter 1/rowReduceMatrix.cpp", "src/Chapter 1/solutionsOfLinearSystems.cpp", "src/General Purpose Mutators/modifyMatrix.cpp",
+                "main.cpp", "src/Accessors/printCLI.cpp", "src/Chapter 1/rowReduceMatrix.cpp", "src/Chapter 1/solutionsOfLinearSystems.cpp", "src/General Purpose Mutators/modifyMatrix.cpp", "src/Accessors/printSymbolizedMatrixCLI.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I", 
