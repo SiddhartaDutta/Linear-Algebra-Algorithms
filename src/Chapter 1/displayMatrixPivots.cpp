@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<struct matrixCoord> Matrix::locateMatrixPivots(){
+void Matrix::displayMatrixPivots(){
 
     // Row-reduce matrix to ensure pivots are accurately found - IRREVERSIBLE PROCESS!
     rowReduceMatrix();

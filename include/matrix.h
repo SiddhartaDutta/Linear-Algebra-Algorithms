@@ -2,11 +2,18 @@
 #define MATRIX_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Matrix {
 
     private:
+
+        struct matrixCoord{
+            int row;
+            int col;
+        };
+
         float **matrix;
         int n;
         int m;
@@ -59,7 +66,8 @@ class Matrix {
 
     // "New" Mutators
     void rowReduceMatrix();
-    void locateMatrixPivots();
+    vector<struct matrixCoord> locateMatrixPivots();
+    void displayMatrixPivots();
     void solutionsOfLinearSystems();
 };
 
