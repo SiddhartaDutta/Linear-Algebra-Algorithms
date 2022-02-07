@@ -12,6 +12,14 @@ class Matrix {
         struct matrixCoord{
             int row;
             int col;
+
+            bool operator==(const matrixCoord& mcCheck){
+                if(this->row == mcCheck.row && this->col == mcCheck.col){
+                    return true;
+                }
+
+                return false;
+            }
         };
 
         float **matrix;
@@ -65,9 +73,13 @@ class Matrix {
     void modifyMatrix(int row, int cols, float value);
 
     // "New" Mutators
+        // Row reduce given/"this" matrix.
     void rowReduceMatrix();
-    vector<struct matrixCoord> locateMatrixPivots();
+        // Return vector with pivot locations.
+    vector<matrixCoord> locateMatrixPivots();
+        // Display pivots using vector of locations.
     void displayMatrixPivots();
+        // Display solutions of the linear system in algebraic form.
     void solutionsOfLinearSystems();
 };
 

@@ -7,8 +7,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                //"${workspaceFolder}\\*.cpp",
-                "main.cpp", "src/Accessors/printCLI.cpp", "src/Chapter 1/rowReduceMatrix.cpp", "src/Chapter 1/solutionsOfLinearSystems.cpp", "src/General Purpose Mutators/modifyMatrix.cpp", "src/Accessors/printSymbolizedMatrixCLI.cpp",
+                //"${workspaceFolder}/*.cpp",
+                "main.cpp", "src/Accessors/printCLI.cpp", "src/Accessors/printSymbolizedMatrixCLI.cpp", "src/Chapter 1/displayMatrixPivots.cpp", "src/Chapter 1/locateMatrixPivots.cpp", "src/Chapter 1/rowReduceMatrix.cpp", "src/Chapter 1/solutionsOfLinearSystems.cpp", "src/General Purpose Mutators/modifyMatrix.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I", 

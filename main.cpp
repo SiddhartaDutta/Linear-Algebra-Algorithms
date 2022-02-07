@@ -14,7 +14,7 @@ int main(){
 
     Matrix test = Matrix(n, m, true);
     test.printCLI();
-    test.locateMatrixPivots();
+    test.displayMatrixPivots();
     //test.printCLI();
     //cout << !0;
 

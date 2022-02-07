@@ -4,13 +4,13 @@
 
 using namespace std;
 
-vector<struct matrixCoord> Matrix::locateMatrixPivots(){
+vector<Matrix::matrixCoord> Matrix::locateMatrixPivots(){
+
+    // Initialize return vector.
+    vector<matrixCoord> returnVector;
 
     // Row-reduce matrix to ensure pivots are accurately found - IRREVERSIBLE PROCESS!
     rowReduceMatrix();
-
-    // New temporary symbolic matrix to display location of pivots.
-    Matrix* retSymbolizedMatrix = new Matrix(n, m);
 
     // Find pivots (and thus dependent vars).
     // Visit each row.
@@ -18,9 +18,6 @@ vector<struct matrixCoord> Matrix::locateMatrixPivots(){
 
         // Go thru each row looking for non-zero values (by checking each column).
         for(int c = 0; c < m; c++){
-
-            // Fill return matrix with symbols
-            retSymbolizedMatrix->modifyMatrix(r, c, '-');
 
             // If non-zero value found, look thru all other rows same column for zeros.
             if(matrix[r][c] != 0){
@@ -39,9 +36,13 @@ vector<struct matrixCoord> Matrix::locateMatrixPivots(){
 
                 }
 
-                // If location being checked is a pivot, save an asterisk in temporary symbolic array.
+                // If location being checked is a pivot, save pivot location with
+                // struct into return vector.
                 if(isPivot){
-                    retSymbolizedMatrix->modifyMatrix(r, c, '*');
+                    matrixCoord pivotLoc;
+                    pivotLoc.row = r;
+                    pivotLoc.col = c;
+                    returnVector.push_back(pivotLoc);
                 }
 
             }
@@ -53,10 +54,6 @@ vector<struct matrixCoord> Matrix::locateMatrixPivots(){
     // Print original (now reduced) matrix.
     printCLI();
 
-    // Print temporary symbolic matrix.
-    retSymbolizedMatrix->printSymbolizedMatrixCLI();
-
-    // Free memory - delete temporary symbolic matrix.
-    delete retSymbolizedMatrix;
-
+    // Return vector.
+    return returnVector;
 }

@@ -6,45 +6,37 @@ using namespace std;
 
 void Matrix::displayMatrixPivots(){
 
-    // Row-reduce matrix to ensure pivots are accurately found - IRREVERSIBLE PROCESS!
-    rowReduceMatrix();
-
     // New temporary symbolic matrix to display location of pivots.
     Matrix* retSymbolizedMatrix = new Matrix(n, m);
 
-    // Find pivots (and thus dependent vars).
+    // "Create" vector of pivot locations.
+    vector<matrixCoord> pivotLocs = locateMatrixPivots();
+
+    // Temporary MatrixCoord object to compare pivot locations with current location.
+    matrixCoord currPivotLoc;
+
     // Visit each row.
     for(int r = 0; r < n; r++){
 
-        // Go thru each row looking for non-zero values (by checking each column).
+        // Go thru each row.
         for(int c = 0; c < m; c++){
 
-            // Fill return matrix with symbols
-            retSymbolizedMatrix->modifyMatrix(r, c, '-');
+            // Update MatrixCoord object with current location.
+            currPivotLoc.row = r;
+            currPivotLoc.col = c;
 
-            // If non-zero value found, look thru all other rows same column for zeros.
-            if(matrix[r][c] != 0){
+            // Attempt to find current location in vector of pivots.
+                // If found, insert asterisk ('*') into symbolic matrix.
+            if(find(pivotLocs.begin(), pivotLocs.end(), currPivotLoc) != pivotLocs.end()){
 
-                bool isPivot = true;
+                retSymbolizedMatrix->modifyMatrix(r, c, '*');
+                
+                // If not found, insert dash ('*') into symbolic matrix.
+            } else {
 
-                // Re-search all rows (column to be checked already given from prev for loop).
-                for(int r2 = 0; r2 < n; r2++){
+                retSymbolizedMatrix->modifyMatrix(r, c, '-');
 
-                    // Ensure currRow != row potential pivot found in.
-                    // Given case 1, then determine if not 0.
-                    // If not 0, set [isPivot] to FALSE.
-                    if(r2 != r && matrix[r2][c]){
-                        isPivot = false;
-                    }
-
-                }
-
-                // If location being checked is a pivot, save an asterisk in temporary symbolic array.
-                if(isPivot){
-                    retSymbolizedMatrix->modifyMatrix(r, c, '*');
-                }
-
-            }
+            }   
 
         }
 
