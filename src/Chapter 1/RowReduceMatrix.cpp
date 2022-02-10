@@ -29,27 +29,6 @@ void Matrix::rowReduceMatrix(){
             }
         }
 
-        // move 0-rows
-        /*for(int x = 0; x < n; x++){
-
-            bool isZero = true;
-
-            for(int y = 0; y < m; y++){
-                if(matrix[x][y] != 0)   isZero = false;
-            }
-
-            if(isZero){
-                n--;
-
-                // swap 0 row with last row
-                for(int c = 0; c < m; c++){
-                    float temp = matrix[x][c];
-                    matrix[x][c] = matrix[n - 1][c];
-                    matrix[n - 1][c] = temp;
-                }
-            }
-        }*/
-
         // Ensure leadVal is not 0 - swap rows if needed
         if(!matrix[leadVal][leadValCol]){
 
@@ -118,7 +97,7 @@ void Matrix::rowReduceMatrix(){
             for(int column = 0; column < m && leadValCol < adjustedM; column++){
 
                 if(row == leadVal){     // if row of current pivot, divide to reduce pivot to 1
-                    if(divisor != 0){// && column < m){            // prevents division by 0
+                    if(divisor != 0){            // prevents division by 0
                         matrix[row][column] /= divisor;
                     }
                 } else {                // else, multiply by row factor and add to reduce (makes pivot column 0)
