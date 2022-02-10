@@ -1,5 +1,5 @@
 # C++ Algorithms for Linear Algebra
-A collection of C++ algorithms designed to solve most linear algebra problems. The course mirrored is the lower-division MATH046 course at UCR taught by Professor Peter Samuelson.
+A collection of C++ algorithms designed to solve most linear algebra problems. The course mirrored is the lower-division MATH046 (Applied Linear Algebra) course at UCR taught by Professor Peter Samuelson.
 
 ## **Topics Covered**
 > ## Chapter 1
