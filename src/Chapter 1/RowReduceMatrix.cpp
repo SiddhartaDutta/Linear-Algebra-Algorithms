@@ -56,7 +56,7 @@ void Matrix::rowReduceMatrix(){
             // find next non-zero
                 // go down column looking for non-zero
             for(int col = leadValCol; col < m; col++){
-                cout << col << endl;
+
                 for(int row = leadVal + 1; row < n; row++){
 
                     // if non-zero row found, save row position, save finding, and force-end for loop
@@ -97,14 +97,12 @@ void Matrix::rowReduceMatrix(){
 
         // Divisor for pivot - outside to prevent constant calculation
         float divisor = matrix[leadVal][leadValCol];
-        cout << divisor << endl;
 
         // Set pivot to = 1 (also ensure augment is protected)
         for(int col = 0; col < m && leadValCol < adjustedM; col++){
-            //cout << "row: " << leadVal << "\tcol: " << col << endl; 
+     
             if(divisor != 0){
                 matrix[leadVal][col] /= divisor;
-                //cout << matrix[leadVal][col] << endl;
             }
         }
 
