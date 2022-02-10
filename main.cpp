@@ -12,18 +12,9 @@ int main(){
     cout << "Colms: ";
     cin >> m;
 
-    Matrix test = Matrix(n, m, true);
+    Matrix test = Matrix(n, m, true, true);
     test.printCLI();
-    test.displayMatrixPivots();
-    //test.printCLI();
-    //cout << !0;
-
-    // print matrix
-    // for(int x = 0; x < n; x++){
-    //     for(int y = 0; y < m; y++){
-    //         cout << test[x][y] << "\t";
-    //     }
-    //     cout << endl;
-    // }
+    test.rowReduceMatrix();
+    test.printCLI();
 
 }

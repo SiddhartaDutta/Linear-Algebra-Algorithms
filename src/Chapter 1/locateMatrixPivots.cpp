@@ -51,9 +51,6 @@ vector<Matrix::matrixCoord> Matrix::locateMatrixPivots(){
 
     }
 
-    // Print original (now reduced) matrix.
-    printCLI();
-
     // Return vector.
     return returnVector;
 }

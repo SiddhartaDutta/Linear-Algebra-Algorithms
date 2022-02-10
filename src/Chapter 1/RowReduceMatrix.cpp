@@ -9,7 +9,7 @@ void Matrix::rowReduceMatrix(){
     int leadValCol = 0;
 
     // Determine pivot location
-    for(int leadVal = 0; leadVal < n && leadVal < m; leadVal++){
+    for(int leadVal = 0; leadVal < n && leadValCol < adjustedM; leadVal++){
 
         if(leadVal != 0){
             leadValCol += 1;
@@ -56,7 +56,7 @@ void Matrix::rowReduceMatrix(){
             // find next non-zero
                 // go down column looking for non-zero
             for(int col = leadValCol; col < m; col++){
-
+                cout << col << endl;
                 for(int row = leadVal + 1; row < n; row++){
 
                     // if non-zero row found, save row position, save finding, and force-end for loop
@@ -97,11 +97,14 @@ void Matrix::rowReduceMatrix(){
 
         // Divisor for pivot - outside to prevent constant calculation
         float divisor = matrix[leadVal][leadValCol];
+        cout << divisor << endl;
 
-        // Set pivot to = 1
-        for(int col = 0; col < m; col++){
+        // Set pivot to = 1 (also ensure augment is protected)
+        for(int col = 0; col < m && leadValCol < adjustedM; col++){
+            //cout << "row: " << leadVal << "\tcol: " << col << endl; 
             if(divisor != 0){
                 matrix[leadVal][col] /= divisor;
+                //cout << matrix[leadVal][col] << endl;
             }
         }
 
@@ -113,11 +116,11 @@ void Matrix::rowReduceMatrix(){
             // Constant of row who's being amended (if pivot [0][0], value of [1][0])
             float multiplier = -matrix[row][leadValCol];
 
-            // Increment across row (over columns of row)
-            for(int column = 0; column < m; column++){
+            // Increment across row (over columns of row) (also ensure augment is protected)
+            for(int column = 0; column < m && leadValCol < adjustedM; column++){
 
                 if(row == leadVal){     // if row of current pivot, divide to reduce pivot to 1
-                    if(divisor != 0){            // prevents division by 0
+                    if(divisor != 0){// && column < m){            // prevents division by 0
                         matrix[row][column] /= divisor;
                     }
                 } else {                // else, multiply by row factor and add to reduce (makes pivot column 0)
@@ -131,13 +134,5 @@ void Matrix::rowReduceMatrix(){
         }
 
     }
-
-    // // print matrix
-    // for(int x = 0; x < n; x++){
-    //     for(int y = 0; y < m; y++){
-    //         cout << matrix[x][y] << "\t";
-    //     }
-    //     cout << endl;
-    // }
 
 }

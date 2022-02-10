@@ -23,17 +23,25 @@ class Matrix {
         };
 
         float **matrix;
+        bool augmented;
         int n;
         int m;
+        int adjustedM;
 
     public:
 
     /* CONSTRUCTORS */
-    Matrix(int rows, int cols, bool fill){
+    Matrix(int rows, int cols, bool augmented, bool fill){
 
         n = rows;
 
         m = cols;
+
+        if(augmented){
+            adjustedM = cols - 1;
+        } else {
+            adjustedM = cols;
+        }
 
         // Create 1st dimension of matrix
         matrix = new float *[rows];
@@ -58,8 +66,11 @@ class Matrix {
 
     }
 
+    // Non-augmented and filled constructor
+    Matrix(int rows, int cols, bool fill) : Matrix(rows, cols,  false, fill){}
+
     // Empty matrix constructor
-    Matrix(int rows, int cols) : Matrix(rows, cols, false){}
+    Matrix(int rows, int cols) : Matrix(rows, cols, false, false){}
 
 
     /* ACCESSORS */
