@@ -14,7 +14,7 @@ int main(){
 
     Matrix test = Matrix(n, m, true, true);
     test.printCLI();
-    test.rowReduceMatrix();
+    test.solutionsOfLinearSystems();
     test.printCLI();
 
 }
