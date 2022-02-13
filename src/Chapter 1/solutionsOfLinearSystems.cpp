@@ -1,6 +1,7 @@
 #include "matrix.h"
 
 #include <queue>
+#include <cmath>
 
 /**
  * Displays solutions of a linear system.
@@ -34,7 +35,7 @@ void Matrix::solutionsOfLinearSystems(){
         queue<int> asciiValsCopy = asciiVals;
 
         // Increment thru the row
-        for(int col = pivotLocs.at(n).col; col < m; col++){
+        for(int col = 0; col < m; col++){
 
             if(matrix[n][col] != 0){
 
@@ -56,14 +57,26 @@ void Matrix::solutionsOfLinearSystems(){
 
     }
 
+    // Output number of solutions
+    cout << "Possible number of solutions: ";
+
+    if(outputEquations.size() != adjustedM){
+
+        if(matrix[outputEquations.size()][m - 1]){
+            cout << "none (The system is inconsistent [0 != " << matrix[outputEquations.size()][m - 1] << "]).\n";
+        } else {
+            cout << "Infinite (Free variables exist).)\n";
+        }
+
+    } else {
+        cout << "one (Each variable is dependent).\n";
+    }
+
     // Output formatted equations
     while(outputEquations.size()){
         cout << outputEquations.front();
         outputEquations.pop();
     }
-
-    // Output number of solutions
-    
 
 }
 
