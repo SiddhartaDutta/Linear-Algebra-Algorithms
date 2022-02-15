@@ -1,7 +1,8 @@
 #include "matrix.h"
 
-#include <queue>
 #include <cmath>
+#include <queue>
+#include <list>
 #include <algorithm>
 
 /**
@@ -17,6 +18,12 @@ void Matrix::solutionsOfLinearSystems(){
 
     // Queue of possible/usable ascii values
     queue<int> asciiVals;
+
+    // Queue of free variables in the system of equations
+    list<char> freeVars;
+
+    // Queue of dependent variables in the system of equations
+    list<char> dependentVars;
 
     for(int n = 97; n < 123; n++){
         asciiVals.push(n);
@@ -53,6 +60,12 @@ void Matrix::solutionsOfLinearSystems(){
 
                     if(col != currPivotLoc.col){
                         equation += "+ ";
+                        
+                        if( !(find(freeVars.begin(), freeVars.end(), asciiValsCopy.front()) != freeVars.end()) ){
+                            freeVars.push_back(asciiValsCopy.front());
+                        }
+                    } else {
+                        dependentVars.push_back(asciiValsCopy.front());
                     }
 
                     equation += "(" + to_string(matrix[n][col]) + ")" + char(asciiValsCopy.front()) + " ";
@@ -86,6 +99,33 @@ void Matrix::solutionsOfLinearSystems(){
     } else {
         cout << "One (Each variable is dependent). The system is consistent.\n";
     }
+
+    // Output variable classifications
+    cout << "Dependent Variables: ";
+    if(!dependentVars.size()){
+        cout << "None";
+    } else {
+        while(dependentVars.size()){
+            cout << dependentVars.front();
+            dependentVars.pop_front();
+            if(dependentVars.size()){ cout << ", "; }
+        }
+    }
+
+    cout << endl;
+
+    cout << "Free Variables: ";
+    if(!freeVars.size()){
+        cout << "None";
+    } else {
+        while(freeVars.size()){
+            cout << freeVars.front();
+            freeVars.pop_front();
+            if(freeVars.size()){ cout << ", "; }
+        }   
+    }
+
+    cout << endl;
 
     // Output formatted equations
     while(outputEquations.size()){
