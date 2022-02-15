@@ -2,6 +2,7 @@
 
 #include <queue>
 #include <cmath>
+#include <algorithm>
 
 /**
  * Displays solutions of a linear system.
@@ -34,14 +35,28 @@ void Matrix::solutionsOfLinearSystems(){
         // Queue copy
         queue<int> asciiValsCopy = asciiVals;
 
-        // Increment thru the row
-        for(int col = 0; col < m; col++){
+        // Temporary MatrixCoord object to compare pivot locations with current location.
+        matrixCoord currPivotLoc = pivotLocs.at(n);
 
-            if(matrix[n][col] != 0){
+        // Adjust asciiValsCopy to ensure start matches start of pivot
+        for(int col = 0; col < currPivotLoc.col; col++){
+            asciiValsCopy.pop();
+        } 
+
+        // Increment thru the row
+        for(int col = currPivotLoc.col; col < m; col++){
+
+            if(matrix[n][col] != 0 || col == adjustedM){
 
                 // Add to string
                 if(col < adjustedM){
-                    equation += to_string(matrix[n][col]) + char(asciiValsCopy.front()) + " ";
+
+                    if(col != currPivotLoc.col){
+                        equation += "+ ";
+                    }
+
+                    equation += "(" + to_string(matrix[n][col]) + ")" + char(asciiValsCopy.front()) + " ";
+
                 } else {
                     equation += "= " + to_string(matrix[n][col]) + "\n"; 
                 }
@@ -63,13 +78,13 @@ void Matrix::solutionsOfLinearSystems(){
     if(outputEquations.size() != adjustedM){
 
         if(matrix[outputEquations.size()][m - 1]){
-            cout << "none (The system is inconsistent [0 != " << matrix[outputEquations.size()][m - 1] << "]).\n";
+            cout << "None (The system is inconsistent [0 != " << matrix[outputEquations.size()][m - 1] << "]). The system is inconsistent.\n";
         } else {
-            cout << "Infinite (Free variables exist).)\n";
+            cout << "Infinite (Free variables exist). The system is consistent.\n";
         }
 
     } else {
-        cout << "one (Each variable is dependent).\n";
+        cout << "One (Each variable is dependent). The system is consistent.\n";
     }
 
     // Output formatted equations
