@@ -9,6 +9,11 @@
  * Displays solutions of a linear system.
  **/
 void Matrix::solutionsOfLinearSystems(){
+
+    if(!augmented){
+        cout << "Current matrix is not augmented. Operation failed.\n";
+        return;
+    }
     
     // "Create" vector of pivot locations.
     vector<matrixCoord> pivotLocs = locateMatrixPivots();
