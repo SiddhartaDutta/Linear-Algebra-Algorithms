@@ -5,6 +5,8 @@ using namespace std;
 
 int main(){
 
+    // shield test
+
     int n, m;
 
     cout << "Rows: ";
