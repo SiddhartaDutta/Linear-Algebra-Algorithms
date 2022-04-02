@@ -38,6 +38,8 @@ class Matrix {
 
         m = cols;
 
+        this->augmented = augmented;
+
         if(augmented){
             adjustedM = cols - 1;
         } else {

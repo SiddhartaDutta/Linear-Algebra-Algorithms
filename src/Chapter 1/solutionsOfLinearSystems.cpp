@@ -61,21 +61,22 @@ void Matrix::solutionsOfLinearSystems(){
             if(matrix[n][col] != 0 || col == adjustedM){
 
                 // Add to string
-                if(col < adjustedM){
+                if(col < adjustedM){    // While column is not final augment
 
-                    if(col != currPivotLoc.col){
+                    if(col != currPivotLoc.col){    // If value is not the pivot value, found free variable -> push into "freeVars" list
                         equation += "+ ";
                         
                         if( !(find(freeVars.begin(), freeVars.end(), asciiValsCopy.front()) != freeVars.end()) ){
                             freeVars.push_back(asciiValsCopy.front());
                         }
-                    } else {
+                    } else {                        // If value IS the pivot value, push into "dependentVars" list
                         dependentVars.push_back(asciiValsCopy.front());
                     }
 
                     equation += "(" + to_string(matrix[n][col]) + ")" + char(asciiValsCopy.front()) + " ";
 
-                } else {
+                } else {                // Add final augment value to equation
+                    cout << "size: " << outputEquations.size() - 1 << " | n: " << n << endl;
                     equation += "= " + to_string(matrix[n][col]) + "\n"; 
                 }
 
@@ -89,6 +90,8 @@ void Matrix::solutionsOfLinearSystems(){
         outputEquations.push(equation);
 
     }
+
+    cout << "size: " << outputEquations.size() << " | adjusted: " << adjustedM << endl;
 
     // Output number of solutions
     cout << "Possible number of solutions: ";
